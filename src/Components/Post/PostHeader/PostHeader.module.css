@@ -1,0 +1,80 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --backgroundColor: #f6f7f8;
+  --secondaryColor: rgb(169, 169, 169);
+}
+
+.PostHeaderContainer {
+  height: 58px;
+  max-width: 100%;
+  margin: 0 8px;
+  display: grid;
+  column-gap: 5px;
+  grid-template-columns: 42px repeat(3, 1fr);
+  justify-items: left;
+  align-items: center;
+  background-color: white;
+}
+
+.PostHeaderContainer .profileImage {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: var(--secondaryColor);
+  align-self: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.PostHeaderContainer .profileImage::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.PostHeaderContainer .profileImage::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 30%;
+  background-color: white;
+  left: 50%;
+  top: 105%;
+  transform: translate(-50%, -50%);
+}
+
+.PostHeaderContainer .profileName,
+.PostHeaderContainer .creationTime {
+  margin-top: 10px;
+  align-self: start;
+  position: relative;
+}
+
+.PostHeaderContainer .creationTime {
+  margin-left: 10px;
+}
+
+.PostHeaderContainer .creationTime::before {
+  content: "";
+  position: absolute;
+  width: 3.5px;
+  height: 3.5px;
+  border-radius: 50%;
+  background-color: var(--secondaryColor);
+  left: -7.5px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+

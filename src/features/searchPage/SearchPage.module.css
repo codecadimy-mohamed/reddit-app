@@ -1,0 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.SearchPageContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+    'SearchInputContainer'
+    'QuickSearchResultsContainer';
+}
+
+.SearchInputContainer {
+  grid-area: SearchInputContainer;
+}
+
+.QuickSearchResultsContainer {
+  grid-area: QuickSearchResultsContainer;
+}

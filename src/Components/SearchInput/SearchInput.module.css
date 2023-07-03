@@ -2,22 +2,23 @@
   --backgroundColor: #f6f7f8;
 }
 
-.SearchBar { 
+.SearchInputContainer { 
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
-.SearchBar form {
+.SearchInputContainer form {
   width: 80%;
 }
 
-.SearchBar form .searchInput {
+.SearchInputContainer form .searchInput {
   width: 100%;
   position: relative;
 }
 
-.SearchBar form .searchInput input {
+.SearchInputContainer form .searchInput input {
   width: 100%;
   background-color: var(--backgroundColor);
   border: none;
@@ -25,31 +26,31 @@
   border-radius: 5px;
 }
 
-.SearchBar form input:focus {
+.SearchInputContainer form input:focus {
   outline: none;
 }
 
-.SearchBar form .searchInput .deleteSymbole {
+.SearchInputContainer form .searchInput .deleteSymbole {
   position: absolute;
-  width: 18px;
-  height: 18px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
-  left: 98%;
+  left: 95%;
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: rgb(0, 0, 0, 0.5);
 }
 
-.SearchBar form .searchInput .deleteSymbole:active {
+.SearchInputContainer form .searchInput .deleteSymbole:active {
   background-color: rgb(0, 0, 0, 0.8);
 }
 
 /* X symbole */
-.SearchBar form .searchInput .deleteSymbole::before {
-  content: "X";
+.SearchInputContainer form .searchInput .deleteSymbole::before {
+  content: "x";
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -60%);
   color: var(--backgroundColor);
 }

@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import searchBarSliceReducer from "../features/searchBar/searchBarSlice";
+import searchPageSliceReducer from "../features/searchPage/searchPageSlice";
 
 // create and export the Store
 export default configureStore({
   reducer: {
-    searchTerm: searchBarSliceReducer, 
+    searchPage: searchPageSliceReducer, 
   },
 });
