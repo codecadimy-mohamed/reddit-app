@@ -1,0 +1,40 @@
+.PostTitleContainer {
+  width: 100%;
+  padding: 5px 10px;
+}
+
+.PostTitleContainer .title {
+  display: inline;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--primeryTextColor);
+}
+
+.PostTitleContainer .title .author {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--primeryTextColor);
+  margin-right: 5px;
+}
+
+.PostTitleContainer .flairContainer {
+  display: inline-flex;
+  height: 20px;
+  column-gap: 5px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5px;
+  border-radius: 10px;
+  margin-left: 5px;
+}
+
+.PostTitleContainer .flairContainer div {
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.PostTitleContainer .flairContainer span {
+  font-size: 12px;
+}

@@ -4,10 +4,6 @@
   box-sizing: border-box;
 }
 
-:root {
-  --backgroundColor: #f6f7f8;
-}
-
 .QuickSearchResultsContainer {
   width: 100%;
   display: grid;
@@ -15,10 +11,9 @@
   grid-template-columns: 1fr;
   grid-auto-rows: auto;
   justify-items: center;
-  background-color: var(--backgroundColor);
+  background-color: var(--lightGrayBackgroundColor);
 }
 
 .post {
   min-width: 100%;
-  background-color: red;
 }

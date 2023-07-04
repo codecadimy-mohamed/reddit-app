@@ -4,7 +4,7 @@ import { createBrowserRouter, createRoutesFromChildren, Route, RouterProvider } 
 import QuickSearchResults from "../Components/QuickSearchResults/QuickSearchResults";
 
 const appRouter = createBrowserRouter(createRoutesFromChildren(
-  <Route path='/' element={ <SearchPage /> }>
+  <Route path='/search' element={ <SearchPage /> }>
     <Route index element={ <QuickSearchResults /> } />
   </Route>
 ));

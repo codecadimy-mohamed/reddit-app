@@ -4,28 +4,23 @@
   box-sizing: border-box;
 }
 
-:root {
-  --backgroundColor: #f6f7f8;
-  --secondaryColor: rgb(169, 169, 169);
-}
-
 .PostHeaderContainer {
   height: 58px;
   max-width: 100%;
-  margin: 0 8px;
+  padding: 0 10px;
   display: grid;
   column-gap: 5px;
   grid-template-columns: 42px repeat(3, 1fr);
   justify-items: left;
   align-items: center;
-  background-color: white;
+  background-color: var(--whiteBackgroundColor);
 }
 
 .PostHeaderContainer .profileImage {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background-color: var(--secondaryColor);
+  background-color: var(--darckGrayBackgroundColor);
   align-self: center;
   position: relative;
   overflow: hidden;
@@ -72,7 +67,7 @@
   width: 3.5px;
   height: 3.5px;
   border-radius: 50%;
-  background-color: var(--secondaryColor);
+  background-color: var(--darckGrayBackgroundColor);
   left: -7.5px;
   top: 50%;
   transform: translate(-50%, -50%);
