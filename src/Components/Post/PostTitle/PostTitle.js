@@ -14,6 +14,11 @@ const PostTitle = ({ postTitleData }) => {
     author,
   } = postTitleData;
 
+  const colorTemplate = {
+    dark: "black",
+    light: "white",
+  };
+
   return (
     <div className={styles.PostTitleContainer}>
       
@@ -29,7 +34,6 @@ const PostTitle = ({ postTitleData }) => {
           className={styles.flairContainer}
           style={{
             backgroundColor: `${link_flair_background_color}`,
-            color: `${link_flair_text_color}`,
           }}
         >
           {
@@ -47,7 +51,7 @@ const PostTitle = ({ postTitleData }) => {
                 );
               } else if (element.e === "text") {
                 return (
-                  <span key={index} style={{ color: `${link_flair_text_color}` }}>
+                  <span key={index} style={{ color: `${colorTemplate[link_flair_text_color]}`, }}>
                     {element.t}
                   </span>
                 );
