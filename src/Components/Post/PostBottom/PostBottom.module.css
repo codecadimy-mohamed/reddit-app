@@ -19,6 +19,10 @@
   margin-right: 4px;
 }
 
+.PostBottomContainer .votes .score {
+  transition: 0.3s;
+}
+
 .PostBottomContainer .comments {
   display: inline-flex;
   justify-content: left;

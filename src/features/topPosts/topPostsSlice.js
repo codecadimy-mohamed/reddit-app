@@ -6,6 +6,10 @@ const options = {
     topPosts: [],
     topPostsPending: false,
     topPostsRejected: false,
+
+    newScores: [],
+    newScoresPending: false,
+    newScoresRejected: false,
   },
   reducers: {
     incrementUpScore: (state, action) => {
@@ -24,6 +28,11 @@ const options = {
       const index = action.payload;
       state.topPosts[index].data.score++;
     },
+    // newScore
+    changeScore: (state, action) => {
+      const {score, index} = action.payload;
+      state.topPosts[index].data.score = score;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -48,6 +57,24 @@ const options = {
         state.topPostsRejected = true;
         console.log('topPosts rejected');
       })
+      // this for getNewScore.
+      .addCase(getNewScore.pending, (state) => {
+        state.newScoresPending = true;
+        state.newScoresRejected = false;
+        console.log('newScore pending');
+      })
+      .addCase(getNewScore.fulfilled, (state, action) => {
+        state.newScoresPending = false;
+        state.newScoresRejected = false;
+        console.log('newScore fulfilled');
+
+        state.newScores = action.payload;
+      })
+      .addCase(getNewScore.rejected, (state) => {
+        state.newScoresPending = false;
+        state.newScoresRejected = true;
+        console.log('newScore rejected');
+      })
   }
 };
 
@@ -63,7 +90,6 @@ export const getTopPosts = createAsyncThunk(
 
       if (response.ok) {
         const json = await response.json();
-        console.log(json);
         return json;
       }
     } catch (error) {
@@ -72,11 +98,33 @@ export const getTopPosts = createAsyncThunk(
   }
 );
 
+export const getNewScore = createAsyncThunk(
+  'topPosts/getNewScore',
+  async () => {
+    try {
+      const response = await fetch('https://www.reddit.com/r/business/.json');
+
+      if (response.ok) {
+        const json = await response.json();
+        const newScores = json.data.children.map(element => element.data.score);
+        return newScores;
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+);
+
 // selectors
+
+  // topPosts
 export const selectTopPosts = state => state.topPosts.topPosts;
 export const selectTopPostsPending = state => state.topPosts.topPostsPending;
 export const selectTopPostsRejected = state => state.topPosts.topPostsRejected;
 
+  // newScores
+export const selectNewScores = state => state.topPosts.newScores;
+
 // exports
-export const { incrementUpScore, decrementUpScore, incrementDownScore, decrementDownScore } = topPostsSlice.actions;
+export const { incrementUpScore, decrementUpScore, incrementDownScore, decrementDownScore, changeScore } = topPostsSlice.actions;
 export default topPostsSlice.reducer;

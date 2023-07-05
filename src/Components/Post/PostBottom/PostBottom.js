@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./PostBottom.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { } from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +12,8 @@ const PostBottom = ({ postBottomData, handleVoteType }) => {
     voteUp,
     voteDown,
   } = postBottomData;
+
+  const [prevScore, setPrevScore] = useState(score);
 
   const scoreNumber = (score) => {
     const scoreString = score.toString();
@@ -98,7 +100,7 @@ const PostBottom = ({ postBottomData, handleVoteType }) => {
           />
         </div>
 
-        <span className={styles.score}>{scoreNumber(score)}</span>
+        <span className={styles.score} >{scoreNumber(score)}</span>
 
         <div className={styles.downArrow} onClick={() => handleVoteType("down")}>
           <FontAwesomeIcon

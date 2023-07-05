@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Post from "../../Components/Post/Post";
 import styles from './TopPosts.module.css';
-import { getTopPosts, selectTopPosts, selectTopPostsPending, selectTopPostsRejected, incrementUpScore, decrementUpScore, incrementDownScore, decrementDownScore } from "./topPostsSlice";
+import { getTopPosts, selectTopPosts, selectTopPostsPending, selectTopPostsRejected, incrementUpScore, decrementUpScore, incrementDownScore, decrementDownScore, getNewScore, selectNewScores, changeScore} from "./topPostsSlice";
 
 function TopPosts() {
   const dispatch = useDispatch();
@@ -11,10 +11,37 @@ function TopPosts() {
   const isPending = useSelector(selectTopPostsPending);
   const isRejected = useSelector(selectTopPostsRejected);
 
+  const newScores = useSelector(selectNewScores);
+
   useEffect(() => {
     // Dispatch getTopPosts initially
     dispatch(getTopPosts());
   }, []);
+
+  useEffect(() => {
+    const intervale = setInterval(() => {
+      dispatch(getNewScore());
+
+    }, 3000);
+
+    return () => clearInterval(intervale);
+  }, []);
+
+  useEffect(() => {
+    console.log(newScores);
+    if (topPosts.length === newScores.length) {
+      topPosts.forEach((element, index) => {
+
+        const outdatedScore = element.data.score;
+        const updatedScore = newScores[index];
+
+        if (outdatedScore !== updatedScore && updatedScore) {
+          dispatch(changeScore({score: updatedScore, index: index}));
+        }
+
+      });
+    };
+  }, [newScores]);
 
   const handleVote = (index, voteType, voteValue) => {
     if (voteType === "up") {
