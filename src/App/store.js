@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import searchPageSliceReducer from "../features/searchPage/searchPageSlice";
+import searchInputSliceReducer from "../features/searchInput/searchInputSlice";
+import topPostsSliceReducer from "../features/topPosts/topPostsSlice";
 
 // create and export the Store
 export default configureStore({
   reducer: {
-    searchPage: searchPageSliceReducer, 
+    searchInput: searchInputSliceReducer,
+    topPosts: topPostsSliceReducer,
   },
 });

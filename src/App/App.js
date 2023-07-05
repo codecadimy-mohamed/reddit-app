@@ -1,11 +1,11 @@
 import styles from "./App.css";
-import SearchPage from "../features/searchPage/SearchPage";
+import SearchPage from "../Components/searchPage/SearchPage";
 import { createBrowserRouter, createRoutesFromChildren, Route, RouterProvider } from 'react-router-dom';
-import QuickSearchResults from "../Components/QuickSearchResults/QuickSearchResults";
+import TopPosts from "../features/topPosts/TopPosts";
 
 const appRouter = createBrowserRouter(createRoutesFromChildren(
   <Route path='/search' element={ <SearchPage /> }>
-    <Route index element={ <QuickSearchResults /> } />
+    <Route index element={ <TopPosts /> } />
   </Route>
 ));
 function App() {

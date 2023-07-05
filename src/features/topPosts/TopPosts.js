@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTrendingPosts, selectTrendingPosts, trendingPostsPending, trendingPostsRejected, } from "../../features/searchPage/searchPageSlice";
-import Post from "../Post/Post";
-import styles from './QuickSearchResults.module.css';
+import Post from "../../Components/Post/Post";
+import styles from './TopPosts.module.css';
+import { getTopPosts, selectTopPosts, selectTopPostsPending, selectTopPostsRejected } from "./topPostsSlice";
 
-function QuickSearchResults({ }) {
+function TopPosts({ }) {
   const dispatch = useDispatch();
 
-  const trendingPosts = useSelector(selectTrendingPosts);
-  const isPending = useSelector(trendingPostsPending);
-  const isRejected = useSelector(trendingPostsRejected);
+  const topPosts = useSelector(selectTopPosts);
+  const isPending = useSelector(selectTopPostsPending);
+  const isRejected = useSelector(selectTopPostsRejected);
 
   useEffect(() => {
-    dispatch(getTrendingPosts());
+    dispatch(getTopPosts());
   }, []);
 
   if (isPending) {
@@ -29,7 +29,7 @@ function QuickSearchResults({ }) {
     <div className={styles.QuickSearchResultsContainer}>
         <h2>Popular posts</h2>
         {
-          trendingPosts.map((post, index) => {
+          topPosts.map((post, index) => {
             return (
                 <div className={styles.post}>
                   <Post post={post} index={index} className={styles.post}/>
@@ -41,4 +41,4 @@ function QuickSearchResults({ }) {
   )
 };
 
-export default QuickSearchResults;
+export default TopPosts;

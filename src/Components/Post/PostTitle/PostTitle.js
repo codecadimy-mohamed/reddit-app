@@ -18,7 +18,7 @@ const PostTitle = ({ postTitleData }) => {
     <div className={styles.PostTitleContainer}>
       
       <h3 className={styles.title}>
-        <span className={styles.author}>{`u/${author}`}</span>
+        <span className={styles.author}>{author}</span>
         {title}
       </h3>
 
