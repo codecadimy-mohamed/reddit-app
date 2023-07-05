@@ -8,6 +8,7 @@ const options = {
     topPostsRejected: false,
 
     newScores: [],
+    newNumComments: [],
     newScoresPending: false,
     newScoresRejected: false,
   },
@@ -32,7 +33,11 @@ const options = {
     changeScore: (state, action) => {
       const {score, index} = action.payload;
       state.topPosts[index].data.score = score;
-    }
+    },
+    changeComments: (state, action) => {
+      const {num_comments, index} = action.payload;
+      state.topPosts[index].data.num_comments = num_comments;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -57,23 +62,24 @@ const options = {
         state.topPostsRejected = true;
         console.log('topPosts rejected');
       })
-      // this for getNewScore.
-      .addCase(getNewScore.pending, (state) => {
+      // this for getNewScoreAndNumComments.
+      .addCase(getNewScoreAndNumComments.pending, (state) => {
         state.newScoresPending = true;
         state.newScoresRejected = false;
-        console.log('newScore pending');
       })
-      .addCase(getNewScore.fulfilled, (state, action) => {
+      .addCase(getNewScoreAndNumComments.fulfilled, (state, action) => {
         state.newScoresPending = false;
         state.newScoresRejected = false;
-        console.log('newScore fulfilled');
 
-        state.newScores = action.payload;
+        const {score, num_comments} = action.payload;
+        console.log(num_comments);
+        console.log(score);
+        state.newScores = score;
+        state.newNumComments = num_comments;
       })
-      .addCase(getNewScore.rejected, (state) => {
+      .addCase(getNewScoreAndNumComments.rejected, (state) => {
         state.newScoresPending = false;
         state.newScoresRejected = true;
-        console.log('newScore rejected');
       })
   }
 };
@@ -86,31 +92,30 @@ export const getTopPosts = createAsyncThunk(
   'topPosts/getTopPosts',
   async () => {
     try {
-      const response = await fetch(`https://www.reddit.com/r/business/.json`);
+      const response = await fetch(`https://www.reddit.com/r/popular/top/.json?t=day`);
 
       if (response.ok) {
         const json = await response.json();
         return json;
       }
     } catch (error) {
-      console.log(error.message);
     }
   }
 );
 
-export const getNewScore = createAsyncThunk(
-  'topPosts/getNewScore',
+export const getNewScoreAndNumComments = createAsyncThunk(
+  'topPosts/getNewScoreAndNumComments',
   async () => {
     try {
-      const response = await fetch('https://www.reddit.com/r/business/.json');
+      const response = await fetch('https://www.reddit.com/r/popular/top/.json?t=day');
 
       if (response.ok) {
         const json = await response.json();
-        const newScores = json.data.children.map(element => element.data.score);
-        return newScores;
+        const newScore = json.data.children.map(element => element.data.score);
+        const newNumComments = json.data.children.map(element => element.data.num_comments);
+        return {score: newScore, num_comments: newNumComments};
       }
     } catch (error) {
-      console.log(error.message);
     }
   }
 );
@@ -124,7 +129,8 @@ export const selectTopPostsRejected = state => state.topPosts.topPostsRejected;
 
   // newScores
 export const selectNewScores = state => state.topPosts.newScores;
-
+export const selectNewNumComments = state => state.topPosts.newNumComments;
+  
 // exports
-export const { incrementUpScore, decrementUpScore, incrementDownScore, decrementDownScore, changeScore } = topPostsSlice.actions;
+export const { incrementUpScore, decrementUpScore, incrementDownScore, decrementDownScore, changeScore, changeComments } = topPostsSlice.actions;
 export default topPostsSlice.reducer;

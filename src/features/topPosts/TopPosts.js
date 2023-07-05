@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Post from "../../Components/Post/Post";
 import styles from './TopPosts.module.css';
-import { getTopPosts, selectTopPosts, selectTopPostsPending, selectTopPostsRejected, incrementUpScore, decrementUpScore, incrementDownScore, decrementDownScore, getNewScore, selectNewScores, changeScore} from "./topPostsSlice";
+import { getTopPosts, selectTopPosts, selectTopPostsPending, selectTopPostsRejected, incrementUpScore, decrementUpScore, incrementDownScore, decrementDownScore, getNewScoreAndNumComments, selectNewScores, changeScore, selectNewNumComments, changeComments} from "./topPostsSlice";
 
 function TopPosts() {
   const dispatch = useDispatch();
@@ -12,6 +12,7 @@ function TopPosts() {
   const isRejected = useSelector(selectTopPostsRejected);
 
   const newScores = useSelector(selectNewScores);
+  const newNumComments = useSelector(selectNewNumComments);
 
   useEffect(() => {
     // Dispatch getTopPosts initially
@@ -19,8 +20,9 @@ function TopPosts() {
   }, []);
 
   useEffect(() => {
+    // Dispatch getNewScoreAndNumComments to update values
     const intervale = setInterval(() => {
-      dispatch(getNewScore());
+      dispatch(getNewScoreAndNumComments());
 
     }, 3000);
 
@@ -28,20 +30,25 @@ function TopPosts() {
   }, []);
 
   useEffect(() => {
-    console.log(newScores);
-    if (topPosts.length === newScores.length) {
+    // dispatchs when one of the Values updated 
+    if (topPosts.length === newScores.length && topPosts.length === newNumComments.length) {
       topPosts.forEach((element, index) => {
 
         const outdatedScore = element.data.score;
         const updatedScore = newScores[index];
+        const outdatedNumComments = element.data.num_comments;
+        const updatedNumComments = newNumComments[index];
 
         if (outdatedScore !== updatedScore && updatedScore) {
           dispatch(changeScore({score: updatedScore, index: index}));
         }
+        if (outdatedNumComments !== updatedNumComments && updatedNumComments) {
+          dispatch(changeComments({num_comments: updatedNumComments, index: index}));
+        }
 
       });
     };
-  }, [newScores]);
+  }, [newScores, newNumComments]);
 
   const handleVote = (index, voteType, voteValue) => {
     if (voteType === "up") {
