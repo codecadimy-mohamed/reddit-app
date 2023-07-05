@@ -1,0 +1,30 @@
+.PostBottomContainer {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  padding: 5px 10px;
+}
+.PostBottomContainer > * {
+  margin-right: 8px;
+}
+
+.PostBottomContainer .votes {
+  display: inline-flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.PostBottomContainer .votes > * {
+  margin-right: 4px;
+}
+
+.PostBottomContainer .comments {
+  display: inline-flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.PostBottomContainer .comments > * {
+  margin-right: 4px;
+}

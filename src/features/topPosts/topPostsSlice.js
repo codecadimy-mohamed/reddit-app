@@ -8,7 +8,22 @@ const options = {
     topPostsRejected: false,
   },
   reducers: {
-
+    incrementUpScore: (state, action) => {
+      const index = action.payload;
+      state.topPosts[index].data.score++;
+    },
+    decrementUpScore: (state, action) => {
+      const index = action.payload;
+      state.topPosts[index].data.score--;
+    },
+    decrementDownScore: (state, action) => {
+      const index = action.payload;
+      state.topPosts[index].data.score--;
+    },
+    incrementDownScore: (state, action) => {
+      const index = action.payload;
+      state.topPosts[index].data.score++;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -44,10 +59,11 @@ export const getTopPosts = createAsyncThunk(
   'topPosts/getTopPosts',
   async () => {
     try {
-      const response = await fetch(`https://www.reddit.com/r/popular/top.json?t=day`);
+      const response = await fetch(`https://www.reddit.com/r/business/.json`);
 
       if (response.ok) {
         const json = await response.json();
+        console.log(json);
         return json;
       }
     } catch (error) {
@@ -62,4 +78,5 @@ export const selectTopPostsPending = state => state.topPosts.topPostsPending;
 export const selectTopPostsRejected = state => state.topPosts.topPostsRejected;
 
 // exports
+export const { incrementUpScore, decrementUpScore, incrementDownScore, decrementDownScore } = topPostsSlice.actions;
 export default topPostsSlice.reducer;

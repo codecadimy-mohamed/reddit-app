@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import PostHeader from "./PostHeader/PostHeader";
 import PostTitle from "./PostTitle/PostTitle";
 import styles from "./Post.module.css";
+import PostBottom from "./PostBottom/PostBottom";
 
-const Post = ({ post, index }) => {
+const Post = ({ post, index, handleVote }) => {
+  const [voteUp, setVoteUp] = useState(false);
+  const [voteDown, setVoteDown] = useState(false);
+
   const { data } = post;
 
   const postHeaderData = {
@@ -24,10 +28,25 @@ const Post = ({ post, index }) => {
     author: data.author
   }
 
+  const postBottomData = {
+    score: data.score,
+    num_comments: data.num_comments,
+  }
+  const handleVoteType = (voteType) => {
+    if (voteType === 'up') {
+      handleVote(index, voteType, !voteUp);
+      setVoteUp(!voteUp);
+    } else if (voteType === 'down') {
+      handleVote(index, voteType, !voteDown);
+      setVoteDown(!voteDown);
+    }
+  } 
+
   return (
     <div className={styles.PostContainer} key={index}>
       <PostHeader postHeaderData={postHeaderData} />
-      <PostTitle postTitleData={postTitleData}/>
+      <PostTitle postTitleData={postTitleData} />
+      <PostBottom postBottomData={postBottomData} handleVoteType={handleVoteType} />
     </div>
   );
 };
