@@ -8,6 +8,9 @@ const PostBottom = ({ postBottomData, handleVoteType }) => {
   const {
     score,
     num_comments,
+    // this outside the fetched data.
+    voteUp,
+    voteDown,
   } = postBottomData;
 
   const scoreNumber = (score) => {
@@ -73,17 +76,43 @@ const PostBottom = ({ postBottomData, handleVoteType }) => {
     }
   }
 
+  const inlineStyles = {
+    up: {
+      true: "orange",
+      false: "black",
+    },
+    down: {
+      true: "blue",
+      false: "black",
+    },
+  }
+
   return (
     <div className={styles.PostBottomContainer}>
       <div className={styles.votes}>
-        <div className={styles.upArrow} onClick={() => handleVoteType("up")}><FontAwesomeIcon icon={faSquareCaretUp} /></div>
-        <span>{scoreNumber(score)}</span>
-        <div className={styles.downArrow} onClick={() => handleVoteType("down")}><FontAwesomeIcon icon={faSquareCaretUp} rotation={180} /></div>
+
+        <div className={styles.upArrow} onClick={() => handleVoteType("up")} >
+          <FontAwesomeIcon
+            icon={faSquareCaretUp}
+            style={{color: inlineStyles.up[voteUp],}}
+          />
+        </div>
+
+        <span className={styles.score}>{scoreNumber(score)}</span>
+
+        <div className={styles.downArrow} onClick={() => handleVoteType("down")}>
+          <FontAwesomeIcon
+            icon={faSquareCaretUp} rotation={180}
+            style={{color: inlineStyles.down[voteDown],}}
+          />
+        </div>
       </div>
+
       <div className={styles.comments}>
         <FontAwesomeIcon icon={faComment} />
         <span>{commentsNumber(num_comments)}</span>
       </div>
+
     </div>
   )
 }

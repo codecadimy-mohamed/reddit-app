@@ -5,17 +5,21 @@ import styles from "./Post.module.css";
 import PostBottom from "./PostBottom/PostBottom";
 
 const Post = ({ post, index, handleVote }) => {
+
+  // for PostBottom
   const [voteUp, setVoteUp] = useState(false);
   const [voteDown, setVoteDown] = useState(false);
 
   const { data } = post;
 
+  // PostHeader
   const postHeaderData = {
     subreddit_name_prefixed: data.subreddit_name_prefixed,
     created_utc: data.created_utc,
     all_awardings :data.all_awardings,
   };
 
+  // PostTitle
   const postTitleData = {
     title: data.title,
     link_flair_background_color: data.link_flair_background_color,
@@ -28,17 +32,28 @@ const Post = ({ post, index, handleVote }) => {
     author: data.author
   }
 
+  // PostBottom
   const postBottomData = {
     score: data.score,
     num_comments: data.num_comments,
+    // this outside the fetched data.
+    voteUp: voteUp,
+    voteDown: voteDown,
   }
+
   const handleVoteType = (voteType) => {
     if (voteType === 'up') {
       handleVote(index, voteType, !voteUp);
       setVoteUp(!voteUp);
+      if (voteDown) {
+        setVoteDown(!voteDown);
+      }
     } else if (voteType === 'down') {
       handleVote(index, voteType, !voteDown);
       setVoteDown(!voteDown);
+      if (voteUp) {
+        setVoteUp(!voteUp);
+      }
     }
   } 
 

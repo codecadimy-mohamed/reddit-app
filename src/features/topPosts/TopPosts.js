@@ -12,6 +12,7 @@ function TopPosts() {
   const isRejected = useSelector(selectTopPostsRejected);
 
   useEffect(() => {
+    // Dispatch getTopPosts initially
     dispatch(getTopPosts());
   }, []);
 
