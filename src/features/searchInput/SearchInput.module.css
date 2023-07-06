@@ -1,12 +1,13 @@
 .SearchInputContainer { 
   width: 100%;
   display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
+  justify-content: end;
+  margin: 10px 0;
 }
 
 .SearchInputContainer form {
   width: 80%;
+  margin-right: 10px;
 }
 
 .SearchInputContainer form .searchInput {
@@ -35,6 +36,7 @@
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: rgb(0, 0, 0, 0.5);
+  transition: .3s;
 }
 
 .SearchInputContainer form .searchInput .deleteSymbole:active {

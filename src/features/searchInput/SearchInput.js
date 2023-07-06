@@ -26,8 +26,11 @@ const SearchInput = () => {
             onChange={handleInputChange}
             placeholder="Search Reddit"
           />
-          <div className={styles.deleteSymbole} onClick={handleDeleteClick}>
-          </div>
+          {searchTerm && (
+            <div className={styles.deleteSymbole} onClick={handleDeleteClick}>
+            </div>
+          )}
+
         </div>
       </form>
     </div>
