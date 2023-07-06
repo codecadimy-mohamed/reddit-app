@@ -7,4 +7,5 @@
 
 .HeaderContainer .searchIcon {
   grid-area: searchIcon;
+  color: black;
 }
