@@ -9,7 +9,7 @@ const Header = () => {
     <div className={styles.HeaderContainer}>
       <div className={styles.searchIcon}>
         <Link to="search">
-        <FontAwesomeIcon icon={faMagnifyingGlass} />
+        <FontAwesomeIcon icon={faMagnifyingGlass} style={{color: 'black'}}/>
         </Link>
       </div>
     </div>
