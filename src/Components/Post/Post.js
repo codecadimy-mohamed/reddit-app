@@ -3,6 +3,7 @@ import PostHeader from "./PostHeader/PostHeader";
 import PostTitle from "./PostTitle/PostTitle";
 import styles from "./Post.module.css";
 import PostBottom from "./PostBottom/PostBottom";
+import PostVisual from "./PostVisual/PostVisual";
 
 const Post = ({ post, index, handleVote }) => {
 
@@ -55,11 +56,19 @@ const Post = ({ post, index, handleVote }) => {
         setVoteUp(!voteUp);
       }
     }
-  } 
+  }
+  
+  // PostVisual
+  const postVisualData = {
+    post_hint: data.post_hint,
+    media: data.media,
+    preview: data.preview,
+  }
 
   return (
     <div className={styles.PostContainer} key={index}>
       <PostHeader postHeaderData={postHeaderData} />
+      <PostVisual postVisualData={postVisualData} />
       <PostTitle postTitleData={postTitleData} />
       <PostBottom postBottomData={postBottomData} handleVoteType={handleVoteType} />
     </div>
