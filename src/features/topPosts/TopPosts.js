@@ -2,11 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Post from "../../Components/Post/Post";
 import styles from './TopPosts.module.css';
-<<<<<<< HEAD
-import { getTopPosts, selectTopPosts, selectTopPostsPending, selectTopPostsRejected, incrementUpScore, decrementUpScore, incrementDownScore, decrementDownScore, } from "./topPostsSlice";
-=======
 import { getTopPosts, selectTopPosts, selectTopPostsPending, selectTopPostsRejected, incrementUpScore, decrementUpScore, incrementDownScore, decrementDownScore } from "./topPostsSlice";
->>>>>>> remove-update-score
 
 function TopPosts() {
   const dispatch = useDispatch();
@@ -15,19 +11,12 @@ function TopPosts() {
   const isPending = useSelector(selectTopPostsPending);
   const isRejected = useSelector(selectTopPostsRejected);
 
-<<<<<<< HEAD
-=======
 
->>>>>>> remove-update-score
   useEffect(() => {
     // Dispatch getTopPosts initially
     dispatch(getTopPosts());
   }, []);
 
-<<<<<<< HEAD
-
-=======
->>>>>>> remove-update-score
   const handleVote = (index, voteType, voteValue) => {
     if (voteType === "up") {
       if (voteValue) {
