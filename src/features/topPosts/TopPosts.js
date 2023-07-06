@@ -16,10 +16,7 @@ function TopPosts() {
     dispatch(getTopPosts());
   }, []);
 
-<<<<<<< HEAD
 
-=======
->>>>>>> fix-someting
   const handleVote = (index, voteType, voteValue) => {
     if (voteType === "up") {
       if (voteValue) {
