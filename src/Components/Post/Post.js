@@ -63,13 +63,14 @@ const Post = ({ post, index, handleVote }) => {
     post_hint: data.post_hint,
     media: data.media,
     preview: data.preview,
+    url: data.url,
   }
 
   return (
     <div className={styles.PostContainer} key={index}>
       <PostHeader postHeaderData={postHeaderData} />
-      <PostVisual postVisualData={postVisualData} />
       <PostTitle postTitleData={postTitleData} />
+      <PostVisual postVisualData={postVisualData} />
       <PostBottom postBottomData={postBottomData} handleVoteType={handleVoteType} />
     </div>
   );
