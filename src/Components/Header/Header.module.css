@@ -1,0 +1,10 @@
+.HeaderContainer {
+  display: grid;
+  grid-template-areas: 
+    '. . . searchIcon';
+  padding: 10px 5px;
+}
+
+.HeaderContainer .searchIcon {
+  grid-area: searchIcon;
+}
