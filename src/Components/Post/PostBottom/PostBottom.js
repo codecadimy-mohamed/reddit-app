@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./PostBottom.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { } from '@fortawesome/free-solid-svg-icons';
 import { faSquareCaretUp, faComment } from '@fortawesome/free-regular-svg-icons';
 
 const PostBottom = ({ postBottomData, handleVoteType }) => {
@@ -95,7 +94,10 @@ const PostBottom = ({ postBottomData, handleVoteType }) => {
         <div className={styles.upArrow} onClick={() => handleVoteType("up")} >
           <FontAwesomeIcon
             icon={faSquareCaretUp}
-            style={{color: inlineStyles.up[voteUp],}}
+            style={{
+              color: inlineStyles.up[voteUp],
+              height: 25,
+            }}
           />
         </div>
 
@@ -104,13 +106,16 @@ const PostBottom = ({ postBottomData, handleVoteType }) => {
         <div className={styles.downArrow} onClick={() => handleVoteType("down")}>
           <FontAwesomeIcon
             icon={faSquareCaretUp} rotation={180}
-            style={{color: inlineStyles.down[voteDown],}}
+            style={{
+              color: inlineStyles.down[voteDown],
+              height: 25,
+            }}
           />
         </div>
       </div>
 
       <div className={styles.comments}>
-        <FontAwesomeIcon icon={faComment} />
+        <FontAwesomeIcon icon={faComment} style={{height: 25,}}/>
         <span>{commentsNumber(num_comments)}</span>
       </div>
 
