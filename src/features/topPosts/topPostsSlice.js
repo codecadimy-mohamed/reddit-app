@@ -71,7 +71,7 @@ export const getTopPosts = createAsyncThunk(
       }
       console.log('top Post not fetched');
     } catch (error) {
-      console.log('the fetch data failed');
+
     }
   }
 );
