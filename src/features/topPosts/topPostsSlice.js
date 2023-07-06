@@ -6,11 +6,6 @@ const options = {
     topPosts: [],
     topPostsPending: false,
     topPostsRejected: false,
-
-    newScores: [],
-    newNumComments: [],
-    newScoresPending: false,
-    newScoresRejected: false,
   },
   reducers: {
     incrementUpScore: (state, action) => {
