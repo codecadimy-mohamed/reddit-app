@@ -13,7 +13,6 @@ const PostBottom = ({ postBottomData, handleVoteType }) => {
     voteDown,
   } = postBottomData;
 
-  const [prevScore, setPrevScore] = useState(score);
 
   const scoreNumber = (score) => {
     const scoreString = score.toString();
@@ -26,7 +25,7 @@ const PostBottom = ({ postBottomData, handleVoteType }) => {
       const handrads = scoreString.slice(-3, -2);
       const thousands = Math.floor(score / 1000);
 
-      if (handrads != 0) {
+      if (handrads !== '0') {
         return `${thousands}.${handrads}k`;
       } else {
         return `${thousands}k`;
@@ -37,7 +36,7 @@ const PostBottom = ({ postBottomData, handleVoteType }) => {
       const thousands = scoreString.slice(-6, -5);
       const millions = Math.floor(score / 1000000);
 
-      if (thousands != 0) {
+      if (thousands !== '0') {
         return `${millions}.${thousands}M`
       } else {
         return `${millions}M`
@@ -58,7 +57,7 @@ const PostBottom = ({ postBottomData, handleVoteType }) => {
       const handrads = commentsString.slice(-3, -2);
       const thousands = Math.floor(comments / 1000);
 
-      if (handrads != 0) {
+      if (handrads !== '0') {
         return `${thousands}.${handrads}K`;
       } else {
         return `${thousands}K`;
@@ -69,7 +68,7 @@ const PostBottom = ({ postBottomData, handleVoteType }) => {
       const thousands = commentsString.slice(-6, -5);
       const millions = Math.floor(comments / 1000000);
 
-      if (thousands != 0) {
+      if (thousands !== '0') {
         return `${millions}.${thousands}M`
       } else {
         return `${millions}M`

@@ -3,7 +3,7 @@ import styles from './SearchInput.module.css';
 import { addSearchTerm, deleteSearchTerm, selectSearchTerm } from './searchInputSlice';
 import { useDispatch, useSelector } from "react-redux";
 
-const SearchInput = ({}) => {
+const SearchInput = () => {
   const searchTerm = useSelector(selectSearchTerm);
   const dispatch = useDispatch();
 

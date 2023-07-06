@@ -15,7 +15,7 @@ function TopPosts() {
   useEffect(() => {
     // Dispatch getTopPosts initially
     dispatch(getTopPosts());
-  }, []);
+  }, [dispatch]);
 
   const handleVote = (index, voteType, voteValue) => {
     if (voteType === "up") {

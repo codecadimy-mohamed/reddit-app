@@ -5,12 +5,8 @@ const PostTitle = ({ postTitleData }) => {
   const {
     title,
     link_flair_background_color,
-    link_flair_css_class,
     link_flair_richtext,
-    link_flair_template_id,
-    link_flair_text,
     link_flair_text_color,
-    link_flair_type,
     author,
   } = postTitleData;
 

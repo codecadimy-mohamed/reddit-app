@@ -2,11 +2,9 @@ import React from "react";
 import styles from "./PostVisual.module.css";
 
 const PostVisual = ({ postVisualData }) => {
-  const { post_hint, media, preview, url } = postVisualData;
+  const { post_hint, media, url } = postVisualData;
 
   if (post_hint === "image") {
-    const imageSource = preview.images[0].source.url;
-    const imageHeight = preview.images[0].source.height;
     
     return (
       <div className={styles.PostVisualContainer}>
@@ -14,7 +12,7 @@ const PostVisual = ({ postVisualData }) => {
       </div>
     );
   } else if (post_hint === "hosted:video") {
-    const { fallback_url, width, height, hls_url } = media.reddit_video;
+    const { fallback_url, hls_url } = media.reddit_video;
 
     return (
       <div className={styles.PostVisualContainer}>

@@ -1,4 +1,3 @@
-import styles from "./App.css";
 import SearchPage from "../Components/searchPage/SearchPage";
 import { createBrowserRouter, createRoutesFromChildren, Route, RouterProvider } from 'react-router-dom';
 import TopPosts from "../features/topPosts/TopPosts";
