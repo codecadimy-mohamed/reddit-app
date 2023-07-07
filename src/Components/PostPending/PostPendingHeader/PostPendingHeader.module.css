@@ -1,0 +1,59 @@
+.PostPendingHeaderContainer {
+  height: 58px;
+  min-width: 100%;
+  padding: 10px 20px;
+  display: grid;
+  column-gap: 5px;
+  grid-template-columns: 42px 1fr;
+  justify-items: left;
+  align-items: center;
+  background-color: var(--whiteBackgroundColor);
+}
+
+.PostPendingHeaderContainer .profileImage {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: var(--lightGrayBackgroundColor);
+  align-self: center;
+  animation: shine 1s infinite;
+}
+
+.PostPendingHeaderContainer .profileName {
+  width: 100%;
+  display: inline-grid;
+  grid-template-areas: 
+    'firstChild'
+    'lastChild';
+  grid-template-columns: 1fr;
+  row-gap: 5px;
+  justify-content: start;
+}
+
+.PostPendingHeaderContainer .profileName .firstChild {
+  width: 45%;
+  height: 15px;
+  background-color: var(--lightGrayBackgroundColor);
+  grid-area: firstChild;
+  animation: shine 1s infinite;
+}
+
+.PostPendingHeaderContainer .profileName .lastChild {
+  width: 30%;
+  height: 10px;
+  background-color: var(--lightGrayBackgroundColor);
+  grid-area: lastChild;
+  animation: shine 1s infinite;
+}
+
+@keyframes shine {
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}

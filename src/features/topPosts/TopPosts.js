@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Post from "../../Components/Post/Post";
 import styles from './TopPosts.module.css';
 import { getTopPosts, selectTopPosts, selectTopPostsPending, selectTopPostsRejected, incrementUpScore, decrementUpScore, incrementDownScore, decrementDownScore } from "./topPostsSlice";
+import PostPending from "../../Components/PostPending/PostPending";
 
 function TopPosts() {
   const dispatch = useDispatch();
@@ -36,7 +37,13 @@ function TopPosts() {
 
 
   if (isPending) {
-    return <p>Pedning</p>;
+    return (
+      <>
+        <PostPending />
+        <PostPending />
+        <PostPending />
+      </>
+    )
   } else if (isRejected) {
     return <p>Rejected</p>;
   } else {
