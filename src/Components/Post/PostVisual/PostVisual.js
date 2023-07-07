@@ -16,7 +16,7 @@ const PostVisual = ({ postVisualData }) => {
 
     return (
       <div className={styles.PostVisualContainer}>
-        <video controls preload="metadata" playsinline >
+        <video controls preload="metadata" playsInline >
           <source src={fallback_url} type="video/mp4" />
           {/* Use the HLS URL if available */}
           {hls_url && <source src={hls_url} type="application/x-mpegURL" />}

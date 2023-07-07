@@ -1,12 +1,14 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import NavigationBar from "../NavigationBar/NavigationBar";
 
-const Main = () => {
+const Root = () => {
   return (
     <div>
       <Outlet />
+      <NavigationBar />
     </div>
   )
 };
 
-export default Main;
+export default Root;

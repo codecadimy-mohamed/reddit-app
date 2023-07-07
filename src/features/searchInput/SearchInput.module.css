@@ -1,13 +1,12 @@
 .SearchInputContainer { 
   width: 100%;
   display: flex;
-  justify-content: end;
-  margin: 10px 0;
+  justify-content: space-between;
+  padding: 10px 10px;
 }
 
 .SearchInputContainer form {
   width: 80%;
-  margin-right: 10px;
 }
 
 .SearchInputContainer form .searchInput {

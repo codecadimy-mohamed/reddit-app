@@ -2,9 +2,9 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
-import styles from "./Header.module.css";
+import styles from "./NavigationBar.module.css";
 
-const Header = () => {
+const NavigationBar = () => {
   return (
     <div className={styles.HeaderContainer}>
       <div className={styles.searchIcon}>
@@ -16,4 +16,4 @@ const Header = () => {
   )
 }
 
-export default Header;
+export default NavigationBar;
