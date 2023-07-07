@@ -2,7 +2,7 @@ import React from "react";
 import styles from './SearchInput.module.css';
 import { addSearchTerm, deleteSearchTerm, selectSearchTerm } from './searchInputSlice';
 import { useDispatch, useSelector } from "react-redux";
-import BackAndForward from "../../Components/Arrows/BackAndForward";
+import Backward from "../../Components/Arrows/Backward/Backward";
 
 const SearchInput = () => {
   const searchTerm = useSelector(selectSearchTerm);
@@ -18,7 +18,7 @@ const SearchInput = () => {
 
   return (
     <div className={styles.SearchInputContainer}>
-      <BackAndForward />
+      <Backward />
       <form>
         <div className={styles.searchInput}>
           <input
