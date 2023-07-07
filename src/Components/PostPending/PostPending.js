@@ -2,7 +2,6 @@ import React from "react";
 import PostPendingHeader from "./PostPendingHeader/PostPendingHeader";
 import PostPendingTitle from "./PostPendingTitle/PostPendingTitle";
 import styles from "./PostPending.module.css";
-import PostPendingBottom from "./PostPendingBottom/PostPendingBottom";
 import PostPendingVisual from "./PostPendingVisual/PostPendingVisual";
 
 const PostPending = () => {
@@ -11,7 +10,6 @@ const PostPending = () => {
       <PostPendingHeader />
       <PostPendingVisual />
       <PostPendingTitle />
-      {/* <PostPendingBottom />  */}
     </div>
   );
 };
