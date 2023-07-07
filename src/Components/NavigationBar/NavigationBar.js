@@ -1,17 +1,16 @@
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./NavigationBar.module.css";
+import HomeIcon from "./HomeIcon/HomeIcon";
+import SearchIcon from "./SearchIcon/SearchIcon";
+import ReelIcon from "./ReelIcon/ReelIcon";
 
 const NavigationBar = () => {
   return (
-    <div className={styles.HeaderContainer}>
-      <div className={styles.searchIcon}>
-        <Link to="search">
-        <FontAwesomeIcon icon={faMagnifyingGlass} style={{color: 'black'}}/>
-        </Link>
-      </div>
+    <div className={styles.NavigationBarContainer}>
+      <NavLink to="/" className={ ({ isActive }) => isActive ? "navlink-active" : "" }><HomeIcon /></NavLink>
+      <NavLink to="/search" className={ ({ isActive }) => isActive ? "navlink-active" : "" }><SearchIcon /></NavLink>
+      <NavLink to="/real" className={ ({ isActive }) => isActive ? "navlink-active" : "" }><ReelIcon /></NavLink>
     </div>
   )
 }
