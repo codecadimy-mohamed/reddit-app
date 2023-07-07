@@ -7,7 +7,7 @@ import HomePage from "../Components/HomePage/HomePage";
 const appRouter = createBrowserRouter(createRoutesFromChildren(
   <Route path="/" element={<Root />}>
     <Route index element={<HomePage />}/>
-    <Route path='/search' element={<SearchPage />}>
+    <Route path='search' element={<SearchPage />}>
       <Route index element={<TopPosts />} />
     </Route>
   </Route>
