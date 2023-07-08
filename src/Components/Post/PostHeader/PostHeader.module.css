@@ -20,7 +20,7 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background-color: var(--darckGrayBackgroundColor);
+  background-color: var(--darkGrayBackgroundColor);
   align-self: center;
   position: relative;
   overflow: hidden;
@@ -67,7 +67,7 @@
   width: 3.5px;
   height: 3.5px;
   border-radius: 50%;
-  background-color: var(--darckGrayBackgroundColor);
+  background-color: var(--darkGrayBackgroundColor);
   left: -7.5px;
   top: 50%;
   transform: translate(-50%, -50%);

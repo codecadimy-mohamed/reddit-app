@@ -5,10 +5,12 @@
 }
 
 :root {
-  --lightGrayBackgroundColor: #f6f7f8;
+  --loadingPrimaryColor: #FF4500;
+  --loadingSecondaryColor: #EFEFEF;
+  --lightGrayBackgroundColor: #f5f5f5;
   --primeryTextColor: #000;
   --secondaryTextColor: rgb(0, 0, 0, 0.7);
-  --darckGrayBackgroundColor: rgb(169, 169, 169);
+  --darkGrayBackgroundColor: rgb(169, 169, 169);
   --whiteBackgroundColor: white;
   --iconFontSize: 20px;
 }

@@ -1,18 +1,56 @@
 .PostPendingVisualContainer {
+  position: relative;
   width: 100%;
   height: 300px;
   background-color: var(--lightGrayBackgroundColor);
-  animation: shine 1s infinite;
+  overflow: hidden;
 }
 
-@keyframes shine {
+.PostPendingVisualContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--loadingPrimaryColor) 25%, var(--loadingSecondaryColor) 50%, var(--loadingPrimaryColor) 75%);
+  background-size: 200% 200%;
+  animation: gradientAnimation 1s ease-in-out infinite;
+}
+
+@keyframes gradientAnimation {
   0% {
-    opacity: 0.5;
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.PostPendingVisualContainer::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background-color: var(--loadingSecondaryColor);
+  border-radius: 50%;
+  animation: pulseAnimation 1s ease-in-out infinite;
+}
+
+@keyframes pulseAnimation {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.7;
   }
   50% {
+    transform: translate(-50%, -50%) scale(1.2);
     opacity: 1;
   }
   100% {
+    transform: translate(-50%, -50%) scale(0.8);
     opacity: 0.7;
   }
 }
