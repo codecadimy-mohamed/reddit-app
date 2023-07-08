@@ -2,7 +2,7 @@ import SearchPage from "../Components/searchPage/SearchPage";
 import { createBrowserRouter, createRoutesFromChildren, Route, RouterProvider } from 'react-router-dom';
 import TopPosts from "../features/topPosts/TopPosts";
 import Root from "../Components/Root/Root";
-import HomePage from "../Components/HomePage/HomePage";
+import HomePage from "../Components/homePage/HomePage";
 
 const appRouter = createBrowserRouter(createRoutesFromChildren(
   <Route path="/" element={<Root />}>

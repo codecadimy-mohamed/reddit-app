@@ -1,21 +1,26 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Post from "../../Components/Post/Post";
-import styles from './TopPosts.module.css';
-import { getTopPosts, selectTopPosts, selectTopPostsPending, selectTopPostsRejected, incrementUpScore, decrementUpScore, incrementDownScore, decrementDownScore } from "./topPostsSlice";
+import styles from './HomePosts.module.css';
+import { getHomePosts, selectHomePosts, selectHomePostsPending, selectHomePostsRejected, incrementUpScore, decrementUpScore, incrementDownScore, decrementDownScore } from "./homePostsSlice";
 import PostPending from "../../Components/PostPending/PostPending";
+import { selectSelectedCategory } from "../categories/categoriesSlice";
 
-function TopPosts() {
+function HomePosts() {
   const dispatch = useDispatch();
 
-  const topPosts = useSelector(selectTopPosts);
-  const isPending = useSelector(selectTopPostsPending);
-  const isRejected = useSelector(selectTopPostsRejected);
+  const HomePosts = useSelector(selectHomePosts);
+  const isPending = useSelector(selectHomePostsPending);
+  const isRejected = useSelector(selectHomePostsRejected);
+
+  const selectedCategory = useSelector(selectSelectedCategory);
 
   useEffect(() => {
-    // Dispatch getTopPosts initially
-    dispatch(getTopPosts());
-  }, [dispatch]);
+    // Dispatch getHomePosts initially
+    const {subreddit} = selectedCategory;
+
+    dispatch(getHomePosts({endPoint: `/${subreddit}/.json`}));
+  }, [selectedCategory]);
 
   const handleVote = (index, voteType, voteValue) => {
     if (voteType === "up") {
@@ -48,9 +53,9 @@ function TopPosts() {
   } else {
     return (
       <div className={styles.QuickSearchResultsContainer}>
-        <h2>Popular posts</h2>
+        <h2>{selectedCategory.category}</h2>
         {
-          topPosts.map((post, index) => {
+          HomePosts.map((post, index) => {
             return (
               <div className={styles.post} key={index}>
                 <Post post={post} index={index} className={styles.post} handleVote={handleVote} />
@@ -62,4 +67,4 @@ function TopPosts() {
     )
   }
 }
-export default TopPosts;
+export default HomePosts;

@@ -1,11 +1,12 @@
 import React from "react";
 import Header from "../Header/Header";
+import HomePosts from "../../features/homePosts/HomePosts";
 
 const HomePage = () => {
   return (
     <div>
       <Header />
-      <h1>Home Page in progress...</h1>
+      <HomePosts />
     </div>
   )
 };

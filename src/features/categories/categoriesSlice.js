@@ -80,7 +80,11 @@ const options = {
         category: "Writing and Literature",
       },
     ],
-    selectedCategory: {},
+    selectedCategory: {
+      subreddit: "r/all",
+      profileImage: "",
+      category: "All",
+    },
   },
   reducers: {
     addSelectedCategory: (state, action) => {
@@ -94,6 +98,7 @@ const categoriesSlice = createSlice(options);
 
 // selectors:
 export const selecteCategories = state => state.categories.categories;
+export const selectSelectedCategory = state => state.categories.selectedCategory;
 
 // exports:
 export const { addSelectedCategory } = categoriesSlice.actions;
