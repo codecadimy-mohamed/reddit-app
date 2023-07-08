@@ -1,0 +1,23 @@
+.BarsContainer {
+  position: relative;
+}
+
+.BarsContainer .BarsIcon {
+  font-size: var(--iconFontSize);
+  width: var(--iconContainerWidth);
+  height: var(--iconContainerHeight);
+  cursor: pointer;
+}
+
+.BarsContainer .CategoriesContainer {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  opacity: 0;
+  max-height: 0;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.CategoriesContainer.Active {
+  opacity: 1;
+}

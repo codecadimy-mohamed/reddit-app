@@ -1,7 +1,14 @@
 .LogoContainer {
   width: 50px;
   height: 50px;
+  border-radius: 50%;
   overflow: hidden;
+  transition: box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.LogoContainer:active {
+  box-shadow: var(--buttonActiveEffect);
 }
 
 .LogoContainer .logo {

@@ -1,0 +1,23 @@
+.CategoriesContainer {
+  display: grid;
+  grid-auto-flow: row;
+  grid-auto-rows: 50px;
+  justify-content: center;
+  grid-template-columns: 1fr;
+  align-items: center;
+  row-gap: 10px;
+  background-color: var(--lightGrayBackgroundColor);
+  width: calc(var(--screenWidth) / 2);
+  height: calc(var(--screenHeight) / 2);
+  overflow: auto;
+  padding: 10px 5px;
+}
+
+.CategoriesContainer::before {
+  content: "";
+  position: absolute;
+  border: 10px solid;
+  border-color: transparent transparent var(--lightGrayBackgroundColor);
+  top: -20px;
+  right: 5px;
+}

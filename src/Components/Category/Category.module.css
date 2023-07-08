@@ -1,0 +1,42 @@
+.CategoryContainer {
+  display: grid;
+  min-width: 100%;
+  height: auto;
+  grid-template-areas:
+    'profileImage subreddit'
+    'profileImage category';
+  grid-template-columns: var(--profileWidth), 1fr;
+  justify-content: start;
+  align-items: center;
+  gap: 5px 10px;
+  background-color: var(--whiteBackgroundColor);
+  padding: 5px 0;
+}
+
+.CategoryContainer .profileImage {
+  grid-area: profileImage;
+  width: var(--profileWidth);
+  height: var(--profileHeight);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.CategoryContainer .profileImage img {
+  max-width: 100%;
+  height: auto;
+  background-size: cover;
+}
+
+.CategoryContainer .subreddit {
+  display: inline;
+  height: min-content;
+  grid-area: subreddit;
+}
+
+.CategoryContainer .category {
+  display: inline;
+  grid-area: category;
+  max-width: 100%;
+  height: min-content;
+  font-size: 12px;
+}
