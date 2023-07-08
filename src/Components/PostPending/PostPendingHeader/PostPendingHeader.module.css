@@ -15,10 +15,20 @@
   height: 42px;
   border-radius: 50%;
   align-self: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.PostPendingHeaderContainer .profileImage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
   background: linear-gradient(45deg, var(--loadingPrimaryColor) 25%, var(--loadingSecondaryColor) 50%, var(--loadingPrimaryColor) 75%);
   background-size: 200% 200%;
   animation: gradientAnimation 1s ease-in-out infinite;
-
 }
 
 .PostPendingHeaderContainer .profileName {
@@ -36,10 +46,20 @@
   width: 45%;
   height: 15px;
   grid-area: firstChild;
+  position: relative;
+  overflow: hidden;
+}
+
+.PostPendingHeaderContainer .profileName .firstChild::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
   background: linear-gradient(45deg, var(--loadingPrimaryColor) 25%, var(--loadingSecondaryColor) 50%, var(--loadingPrimaryColor) 75%);
   background-size: 200% 200%;
   animation: gradientAnimation 1s ease-in-out infinite;
-
 }
 
 .PostPendingHeaderContainer .profileName .lastChild {
@@ -49,7 +69,20 @@
   background: linear-gradient(45deg, var(--loadingPrimaryColor) 25%, var(--loadingSecondaryColor) 50%, var(--loadingPrimaryColor) 75%);
   background-size: 200% 200%;
   animation: gradientAnimation 1s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
 
+.PostPendingHeaderContainer .profileName .lastChild::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--loadingPrimaryColor) 25%, var(--loadingSecondaryColor) 50%, var(--loadingPrimaryColor) 75%);
+  background-size: 200% 200%;
+  animation: gradientAnimation 1s ease-in-out infinite;
 }
 
 @keyframes gradientAnimation {

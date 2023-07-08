@@ -11,7 +11,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 200%;
   height: 100%;
   background: linear-gradient(45deg, var(--loadingPrimaryColor) 25%, var(--loadingSecondaryColor) 50%, var(--loadingPrimaryColor) 75%);
   background-size: 200% 200%;
