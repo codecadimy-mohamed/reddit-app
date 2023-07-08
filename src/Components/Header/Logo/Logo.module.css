@@ -1,0 +1,11 @@
+.LogoContainer {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.LogoContainer .logo {
+  width: 100%;
+  height: auto;
+  background-size: cover;
+}
