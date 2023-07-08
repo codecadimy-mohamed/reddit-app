@@ -20,7 +20,7 @@ function HomePosts() {
     const {subreddit} = selectedCategory;
 
     dispatch(getHomePosts({endPoint: `/${subreddit}/.json`}));
-  }, [selectedCategory]);
+  }, [selectedCategory, dispatch]);
 
   const handleVote = (index, voteType, voteValue) => {
     if (voteType === "up") {
