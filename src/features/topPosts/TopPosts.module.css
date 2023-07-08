@@ -1,9 +1,3 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 .QuickSearchResultsContainer {
   width: 100%;
   display: grid;
@@ -11,7 +5,12 @@
   grid-template-columns: 1fr;
   grid-auto-rows: auto;
   justify-items: center;
-  background-color: var(--lightGrayBackgroundColor);
+  background-color: var(--whiteBackgroundColor);
+  padding-bottom: 40px;
+}
+
+.QuickSearchResultsContainer h2 {
+  justify-self: start;
 }
 
 .post {
