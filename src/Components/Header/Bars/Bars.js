@@ -30,18 +30,19 @@ const Bars = () => {
   }, [clicked]);
 
   return (
-    <div className={styles.BarsContainer}>
+    <div
+      className={styles.BarsContainer}
+      onClick={handleClick}
+      ref={barsIconRef}
+    >
       <div
-        ref={barsIconRef}
         className={styles.BarsIcon}
-        onClick={handleClick}
       >
         <FontAwesomeIcon icon={faBars} />
       </div>
       <div
-        className={`${styles.CategoriesContainer} ${
-          clicked ? styles.Active : ""
-        }`}
+        className={`${styles.CategoriesContainer} ${clicked ? styles.Active : ""
+          }`}
       >
         {clicked && <Categories />}
       </div>
