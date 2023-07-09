@@ -11,15 +11,5 @@
   height: calc(var(--screenHeight) / 2);
   overflow: auto;
   padding: 10px 5px;
-  position: relative;
-  z-index: 1;
 }
 
-.CategoriesContainer::before {
-  content: "";
-  position: absolute;
-  border: 10px solid;
-  border-color: transparent transparent var(--lightGrayBackgroundColor);
-  top: -20px;
-  right: 5px;
-}

@@ -1,6 +1,6 @@
 .PostTitleContainer {
   width: 100%;
-  padding: 5px 10px;
+  padding: 5px 20px;
 }
 
 .PostTitleContainer .title {
@@ -12,7 +12,7 @@
 
 .PostTitleContainer .title .author {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 700;
   color: var(--primeryTextColor);
   margin-right: 5px;
 }

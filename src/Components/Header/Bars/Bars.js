@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Bars.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
@@ -6,17 +6,43 @@ import Categories from "../../../features/categories/Categories";
 
 const Bars = () => {
   const [clicked, setClicked] = useState(false);
+  const barsIconRef = useRef();
 
   const handleClick = () => {
     setClicked(!clicked);
   };
 
+  const handleClickOutside = (event) => {
+    if (barsIconRef.current && !barsIconRef.current.contains(event.target)) {
+      setClicked(false);
+    }
+  };
+
+  useEffect(() => {
+    if (clicked) {
+      document.addEventListener("click", handleClickOutside);
+    } else {
+      document.removeEventListener("click", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [clicked]);
+
   return (
     <div className={styles.BarsContainer}>
-      <div className={styles.BarsIcon} onClick={handleClick}>
+      <div
+        ref={barsIconRef}
+        className={styles.BarsIcon}
+        onClick={handleClick}
+      >
         <FontAwesomeIcon icon={faBars} />
       </div>
-      <div className={`${styles.CategoriesContainer} ${clicked ? styles.Active : ""}`}>
+      <div
+        className={`${styles.CategoriesContainer} ${
+          clicked ? styles.Active : ""
+        }`}
+      >
         {clicked && <Categories />}
       </div>
     </div>

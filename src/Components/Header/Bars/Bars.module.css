@@ -12,12 +12,23 @@
 .BarsContainer .CategoriesContainer {
   position: absolute;
   right: 0;
-  top: 50px;
+  top: 60px;
   opacity: 0;
   max-height: 0;
   transition: opacity 0.3s ease, max-height 0.3s ease;
+  z-index: 1;
+}
+
+.BarsContainer .CategoriesContainer::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -40px;
+  border: 20px solid;
+  border-color: transparent transparent var(--lightGrayBackgroundColor);
 }
 
 .CategoriesContainer.Active {
   opacity: 1;
 }
+
