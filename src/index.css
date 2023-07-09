@@ -12,9 +12,9 @@
   --secondaryTextColor: rgb(0, 0, 0, 0.7);
   --darkGrayBackgroundColor: rgb(169, 169, 169);
   --whiteBackgroundColor: white;
-  --iconFontSize: 30px;
-  --iconContainerWidth: 50px;
-  --iconContainerHeight: 50px;
+  --iconFontSize: 20px;
+  --iconContainerWidth: 30px;
+  --iconContainerHeight: 30px;
   --buttonActiveEffect: 0 0 10px 4px var(--darkGrayBackgroundColor);
   --profileWidth: 35px;
   --profileHeight: 35px;
