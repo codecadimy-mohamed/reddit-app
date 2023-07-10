@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styles from './SearchInput.module.css';
-import { addSearchTerm, deleteSearchTerm, getSubredditsQuickResults, selectSearchTerm, selectSubreddits, selectSubredditsPending, selectSubredditsRejected } from './searchInputSlice';
+import {  deleteSearchTerm, getSubredditsQuickResults, selectSearchTerm, selectSubreddits, selectSubredditsPending, selectSubredditsRejected } from './searchInputSlice';
 import { useDispatch, useSelector } from "react-redux";
 import Backward from "../../Components/Arrows/Backward/Backward";
 import Subreddits from "../../Components/subreddits/Subreddits";
@@ -18,7 +18,7 @@ const SearchInput = () => {
 
    useEffect(() => {
     dispatch(getSubredditsQuickResults(q));
-   }, [q]);
+   }, [q, dispatch]);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
