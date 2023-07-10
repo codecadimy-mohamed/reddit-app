@@ -31,25 +31,17 @@ const options = {
       .addCase(getTopPosts.pending, (state) => {
         state.topPostsPending = true;
         state.topPostsRejected = false;
-        console.log('topPosts pending');
       })
       .addCase(getTopPosts.fulfilled, (state, action) => {
         state.topPostsPending = false;
         state.topPostsRejected = false;
-        console.log('topPosts fulfilled');
-        console.log('this the action');
-        console.log(action);
 
         const topPostsResults = action.payload.data.children;
         state.topPosts = topPostsResults;
-        console.log(`This is topPosts`)
-        console.log(topPostsResults);
-        console.log('top post fulfilled 2');
       })
       .addCase(getTopPosts.rejected, (state) => {
         state.topPostsPending = false;
         state.topPostsRejected = true;
-        console.log('topPosts rejected');
       })
   }
 };
@@ -66,10 +58,8 @@ export const getTopPosts = createAsyncThunk(
 
       if (response.ok) {
         const json = await response.json();
-        console.log('topPosts fetched');
         return json;
       }
-      console.log('top Post not fetched');
     } catch (error) {
 
     }

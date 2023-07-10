@@ -1,12 +1,16 @@
 .SearchInputContainer { 
   width: 100%;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas: 
+    'backward form'
+    '. searchResults';
   padding: 10px 10px;
 }
 
 .SearchInputContainer form {
-  width: 80%;
+  grid-area: form;
 }
 
 .SearchInputContainer form .searchInput {
@@ -50,4 +54,14 @@
   left: 50%;
   transform: translate(-50%, -60%);
   color: var(--lightGrayBackgroundColor);
+}
+
+.SearchInputContainer .backward {
+  grid-area: backward;
+}
+
+.SearchInputContainer .searchResults {
+  grid-area: searchResults;
+  max-height: calc(var(--screenHeight) / 2);
+  overflow: scroll;
 }

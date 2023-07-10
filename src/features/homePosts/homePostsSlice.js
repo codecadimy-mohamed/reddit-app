@@ -31,24 +31,17 @@ const options = {
       .addCase(getHomePosts.pending, (state) => {
         state.homePostsPending = true;
         state.homePostsRejected = false;
-        console.log('homePosts pending');
       })
       .addCase(getHomePosts.fulfilled, (state, action) => {
         state.homePostsPending = false;
         state.homePostsRejected = false;
-        console.log('homePosts fulfilled');
-        console.log('this the action');
-        console.log(action);
 
         const homePostsResults = action.payload.data.children;
         state.homePosts = homePostsResults;
-        console.log(`This is homePosts`)
-        console.log(homePostsResults)
       })
       .addCase(getHomePosts.rejected, (state) => {
         state.homePostsPending = false;
         state.homePostsRejected = true;
-        console.log('homePosts rejected');
       })
   }
 };
@@ -61,17 +54,12 @@ export const getHomePosts = createAsyncThunk(
   'homePosts/getHomePosts',
   async ({endPoint}) => {
     try {
-      console.log("this is endPoint");
-      console.log(endPoint);
       const response = await fetch(`https://www.reddit.com${endPoint}`);
 
       if (response.ok) {
         const json = await response.json();
-        console.log('homePosts fetched');
-        console.log(json);
         return json;
       }
-      console.log('top Post not fetched');
     } catch (error) {
 
     }
