@@ -28,7 +28,9 @@ const SearchInput = () => {
   const inputRef = useRef();
 
   useEffect(() => {
-    dispatch(getSubredditsQuickResults(q));
+    if (q) {
+      dispatch(getSubredditsQuickResults(q));
+    }
   }, [q, dispatch]);
 
   useEffect(() => {
