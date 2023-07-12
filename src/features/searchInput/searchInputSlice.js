@@ -3,18 +3,21 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const options = {
   name: "searchInput",
   initialState: {
-    searchTerm: "",
     subredditsQuickResults: [],
     subredditsQuickResultsPending: false,
     subredditsQuickResultsRejected: false,
+
+    selectedSubreddit: {
+      data: {
+        display_name_prefixed: 'r/popular/top'
+      },
+      kind: 't4',
+    },
   },
   reducers: {
-    addSearchTerm: (state, action) => {
-      state.searchTerm = action.payload;
-    },
-    deleteSearchTerm: (state) => {
-      state.searchTerm = "";
-    },
+    addSelectedSubreddit: (state, action) => {
+      state.selectedSubreddit = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -26,7 +29,6 @@ const options = {
         state.subredditsQuickResultsPending = false;
         state.subredditsQuickResultsRejected = false;
         const result = action.payload.data?.children || [];
-        console.log(result);
         state.subredditsQuickResults = result;
       })
       .addCase(getSubredditsQuickResults.rejected, (state) => {
@@ -57,11 +59,13 @@ export const getSubredditsQuickResults = createAsyncThunk(
 );
 
 // selectors
-export const selectSearchTerm = (state) => state.searchInput.searchTerm;
 export const selectSubreddits = (state) => state.searchInput.subredditsQuickResults;
 export const selectSubredditsPending = (state) => state.searchInput.subredditsQuickResultsPending;
 export const selectSubredditsRejected = (state) => state.searchInput.subredditsQuickResultsRejected;
+export const selectSelectedSubreddit = (state) => state.searchInput.selectedSubreddit;
 
-// exports
-export const { addSearchTerm, deleteSearchTerm } = searchInputSlice.actions;
+// actions
+export const { addSelectedSubreddit } = searchInputSlice.actions;
+
+// reducer
 export default searchInputSlice.reducer;

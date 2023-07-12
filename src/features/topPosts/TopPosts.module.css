@@ -7,10 +7,13 @@
   justify-items: center;
   background-color: var(--whiteBackgroundColor);
   padding-bottom: 40px;
+  position: relative;
+  top: 60px;
 }
 
 .QuickSearchResultsContainer h2 {
   justify-self: start;
+  margin-left: 1em;
 }
 
 .post {

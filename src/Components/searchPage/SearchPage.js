@@ -6,7 +6,9 @@ import SearchInput from "../../features/searchInput/SearchInput";
 function SearchPage() {
   return (
     <div className={styles.SearchPageContainer}>
-      <SearchInput/>
+      <div className={styles.searchInput}>
+        <SearchInput />
+      </div>
       <Outlet />
     </div>
   )

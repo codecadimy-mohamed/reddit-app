@@ -52,16 +52,16 @@ const topPostsSlice = createSlice(options);
 
 export const getTopPosts = createAsyncThunk(
   'topPosts/getTopPosts',
-  async () => {
+  async (endPoint) => {
     try {
-      const response = await fetch(`https://www.reddit.com/r/popular/top/.json`);
+      const response = await fetch(`https://www.reddit.com${endPoint}`);
 
       if (response.ok) {
         const json = await response.json();
         return json;
       }
     } catch (error) {
-
+      console.log(error);
     }
   }
 );

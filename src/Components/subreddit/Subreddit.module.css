@@ -1,6 +1,6 @@
 .subredditContainer {
   display: grid;
-  width: 100%;
+  max-width: 100%;
   background-color: var(--whiteBackgroundColor);
   align-items: center;
   grid-template-areas: 
@@ -10,7 +10,13 @@
   cursor: pointer;
   row-gap: 5px;
   column-gap: 10px;
-  height: min-content;
+  /* height: min-content; */
+  padding: 0 2%;
+  border-radius: 0.5rem;
+}
+
+.subredditContainer > * {
+  display: inline-block;
 }
 
 .subredditContainer .subredditProfile {

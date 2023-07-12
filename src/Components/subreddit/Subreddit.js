@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Subreddit.module.css";
 
-const Subreddit = ({ subreddit, index }) => {
+const Subreddit = ({ subreddit, index, handleSelectedSubreddit }) => {
   const {
     display_name_prefixed,
     subscribers,
@@ -40,8 +40,12 @@ const Subreddit = ({ subreddit, index }) => {
     }
   };
 
+  const handleClick = () => {
+    handleSelectedSubreddit(subreddit);
+  }
+
   return (
-    <div className={styles.subredditContainer} key={index}>
+    <div className={styles.subredditContainer} key={index} onClick={() => handleClick()}>
       <div
         className={styles.subredditProfile}
         style={{ backgroundImage: `url(${icon_img})` }}
