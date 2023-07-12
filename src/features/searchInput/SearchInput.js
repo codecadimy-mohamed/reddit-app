@@ -52,6 +52,7 @@ const SearchInput = () => {
   const handleInputChange = (e) => {
     const value = e.target.value;
     setSearchParams({ q: value });
+    setShowSubreddits(true);
   };
 
   const handleDeleteClick = () => {
