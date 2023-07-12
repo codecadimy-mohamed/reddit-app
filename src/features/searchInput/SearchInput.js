@@ -43,14 +43,19 @@ const SearchInput = () => {
     return () => document.removeEventListener('click', handleClickOUtside);
   });
 
-  const handleInputChange = (e) => {
-    const value = e.target.value;
-    setSearchParams({ q: value });
+  // check the subreddits is truty or not
+
+  useEffect(() => {
     if (subreddits.length > 0) {
       setShowSubreddits(true);
     } else {
-      setShowSubreddits(false);
+      setShowSubreddits(true);
     }
+  }, [subreddits, dispatch])
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setSearchParams({ q: value });
   };
 
   const handleDeleteClick = () => {
