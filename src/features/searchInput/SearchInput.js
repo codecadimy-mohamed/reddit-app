@@ -32,26 +32,22 @@ const SearchInput = () => {
   }, [q, dispatch]);
 
   useEffect(() => {
-    const handleClickOUtside = (event) => {
+    const handleClickOutside = (event) => {
       if (inputRef.current && !inputRef.current.contains(event.target)) {
         setShowSubreddits(false);
       }
-    }
+    };
 
-    document.addEventListener('click', handleClickOUtside);
+    document.addEventListener("click", handleClickOutside);
 
-    return () => document.removeEventListener('click', handleClickOUtside);
-  });
-
-  // check the subreddits is truty or not
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
-    if (subreddits.length > 0) {
-      setShowSubreddits(true);
-    } else {
-      setShowSubreddits(true);
-    }
-  }, [subreddits, dispatch])
+    setShowSubreddits(subreddits.length > 0);
+  }, [subreddits]);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -74,9 +70,8 @@ const SearchInput = () => {
         <Backward />
       </div>
       <form>
-        <div className={styles.searchInput}>
+        <div className={styles.searchInput} ref={inputRef}>
           <input
-          ref={inputRef}
             type="text"
             name="searchTerm"
             value={q}
