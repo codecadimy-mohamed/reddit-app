@@ -7,7 +7,7 @@
   position: fixed;
   bottom: 0;
   background-color: var(--whiteBackgroundColor);
-  box-shadow: 0 -1px 4px var(--darkGrayBackgroundColor);
+  box-shadow: 0 -1px 4px var(--darkGray);
   font-size: var(--iconFontSize);
 }
 

@@ -1,11 +1,20 @@
 import React, { useState } from "react";
-import PostHeader from "./PostHeader/PostHeader";
-import PostTitle from "./PostTitle/PostTitle";
-import styles from "./Post.module.css";
-import PostBottom from "./PostBottom/PostBottom";
-import PostVisual from "./PostVisual/PostVisual";
 
-const Post = ({ post, index, handleVote }) => {
+import styles from "./Post.module.css";
+import PostHeader from "./PostHeader/PostHeader";
+import PostVisual from "./PostVisual/PostVisual";
+import PostTitle from "./PostTitle/PostTitle";
+import PostBottom from "./PostBottom/PostBottom";
+
+const Post = ({
+  post,
+  index,
+  handleVote,
+  handleCommentClick,
+  postsComments,
+  postsCommentsPending,
+  postsCommentsRejected
+}) => {
 
   // for PostBottom
   const [voteUp, setVoteUp] = useState(false);
@@ -17,7 +26,7 @@ const Post = ({ post, index, handleVote }) => {
   const postHeaderData = {
     subreddit_name_prefixed: data.subreddit_name_prefixed,
     created_utc: data.created_utc,
-    all_awardings :data.all_awardings,
+    all_awardings: data.all_awardings,
   };
 
   // PostTitle
@@ -57,7 +66,14 @@ const Post = ({ post, index, handleVote }) => {
       }
     }
   }
-  
+
+  const handleCommentClickOnPostBottom = () => {
+    const subreddit = data.subreddit_name_prefixed;
+    const postId = data.id;
+
+    handleCommentClick(subreddit, postId);
+  }
+
   // PostVisual
   const postVisualData = {
     post_hint: data.post_hint,
@@ -68,10 +84,21 @@ const Post = ({ post, index, handleVote }) => {
 
   return (
     <div className={styles.PostContainer} key={index}>
-      <PostHeader postHeaderData={postHeaderData} />
+      <PostHeader
+        profileName={data.subreddit_name_prefixed}
+        created={data.created_utc}
+        awardings={data.all_awardings}
+      />
       <PostVisual postVisualData={postVisualData} />
       <PostTitle postTitleData={postTitleData} />
-      <PostBottom postBottomData={postBottomData} handleVoteType={handleVoteType} />
+      <PostBottom
+        postBottomData={postBottomData}
+        handleVoteType={handleVoteType}
+        handleCommentClickOnPostBottom={handleCommentClickOnPostBottom}
+        postsComments={postsComments}
+        postsCommentsPending={postsCommentsPending}
+        postsCommentsRejected={postsCommentsRejected}
+      />
     </div>
   );
 };

@@ -1,11 +1,51 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+// reducers
+
+export const getTopPosts = createAsyncThunk(
+  'topPosts/getTopPosts',
+  async (endPoint) => {
+    try {
+      const response = await fetch(`https://www.reddit.com${endPoint}`);
+
+      if (response.ok) {
+        const json = await response.json();
+        return json;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const getComments = createAsyncThunk(
+  'topPost/getComments',
+  async (endPoint) => {
+    try {
+      const response = await fetch(`https://www.reddit.com/${endPoint}`);
+
+      if (response.ok) {
+        const json = await response.json();
+        console.log('this is comment json');
+        console.log(json);
+        return json;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  } 
+);
+
 const options = {
   name: "topPosts",
   initialState: {
     topPosts: [],
     topPostsPending: false,
     topPostsRejected: false,
+
+    postsComments: [],
+    postsCommentsPending: false,
+    postsCommentsRejected: false,
   },
   reducers: {
     incrementUpScore: (state, action) => {
@@ -43,36 +83,40 @@ const options = {
         state.topPostsPending = false;
         state.topPostsRejected = true;
       })
+      // getComments
+      .addCase(getComments.pending, (state) => {
+        state.postsCommentsPending = true;
+        state.postsCommentsRejected = false;
+      })
+      .addCase(getComments.fulfilled, (state, action) => {
+        state.postsCommentsPending = false;
+        state.postsCommentsRejected = false;
+
+        const comments = action.payload[1].data.children;
+        console.log('this comments');
+        console.log(comments);
+        state.postsComments = comments;      
+      })
+      .addCase(getComments.rejected, (state) => {
+        state.postsCommentsPending = false;
+        state.postsCommentsRejected = true;
+      })
   }
 };
 
 const topPostsSlice = createSlice(options);
 
-// reducers
-
-export const getTopPosts = createAsyncThunk(
-  'topPosts/getTopPosts',
-  async (endPoint) => {
-    try {
-      const response = await fetch(`https://www.reddit.com${endPoint}`);
-
-      if (response.ok) {
-        const json = await response.json();
-        return json;
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-);
-
 // selectors
-
-  // topPosts
 export const selectTopPosts = state => state.topPosts.topPosts;
 export const selectTopPostsPending = state => state.topPosts.topPostsPending;
 export const selectTopPostsRejected = state => state.topPosts.topPostsRejected;
+
+export const selectPostsComments = state => state.topPosts.postsComments;
+export const selectPostsCommentsPending = state => state.topPosts.postsCommentsPending;
+export const selectPostsCommentsRejected = state => state.topPosts.postsCommentsRejected;
   
-// exports
+// actions
 export const { incrementUpScore, decrementUpScore, incrementDownScore, decrementDownScore } = topPostsSlice.actions;
+
+// reducer
 export default topPostsSlice.reducer;

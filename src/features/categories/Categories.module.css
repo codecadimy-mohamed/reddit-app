@@ -6,7 +6,7 @@
   grid-template-columns: 1fr;
   align-items: center;
   row-gap: 10px;
-  background-color: var(--lightGrayBackgroundColor);
+  background-color: var(--lightGray);
   width: calc(var(--screenWidth) / 2);
   height: calc(var(--screenHeight) / 2);
   overflow: auto;

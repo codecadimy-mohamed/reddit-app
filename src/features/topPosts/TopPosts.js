@@ -1,10 +1,24 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Post from "../../Components/Post/Post";
+
 import styles from './TopPosts.module.css';
-import { getTopPosts, selectTopPosts, selectTopPostsPending, selectTopPostsRejected, incrementUpScore, decrementUpScore, incrementDownScore, decrementDownScore } from "./topPostsSlice";
-import PostPending from "../../Components/PostPending/PostPending";
+import {
+  getTopPosts,
+  selectTopPosts,
+  selectTopPostsPending,
+  selectTopPostsRejected,
+  incrementUpScore,
+  decrementUpScore,
+  incrementDownScore,
+  decrementDownScore,
+  getComments,
+  selectPostsComments,
+  selectPostsCommentsPending,
+  selectPostsCommentsRejected,
+} from "./topPostsSlice";
 import { selectSelectedSubreddit } from "../searchInput/searchInputSlice";
+import PostPending from "../../Components/PostPending/PostPending";
+import Post from "../../Components/post/Post";
 
 function TopPosts() {
   const dispatch = useDispatch();
@@ -15,12 +29,17 @@ function TopPosts() {
 
   const selectedSubreddit = useSelector(selectSelectedSubreddit);
 
+  const postsComments = useSelector(selectPostsComments);
+  const postsCommentsPending = useSelector(selectPostsCommentsPending);
+  const postsCommentsRejected = useSelector(selectPostsCommentsRejected);
+
   useEffect(() => {
     // Dispatch getTopPosts initially
     const endPoint = `/${selectedSubreddit.data.display_name_prefixed}/.json`;
     dispatch(getTopPosts(endPoint));
   }, [dispatch, selectedSubreddit]);
 
+  // Post business
   const handleVote = (index, voteType, voteValue) => {
     if (voteType === "up") {
       if (voteValue) {
@@ -35,8 +54,12 @@ function TopPosts() {
         dispatch(incrementDownScore(index));
       }
     }
-
   };
+
+  const handleCommentClick = (subreddit, postId) => {
+    const endPoint = `/${subreddit}/comments/${postId}/.json`;
+    dispatch(getComments(endPoint));
+  }
 
 
   if (isPending) {
@@ -58,7 +81,17 @@ function TopPosts() {
           topPosts.map((post, index) => {
             return (
               <div className={styles.post} key={index}>
-                <Post post={post} index={index} className={styles.post} handleVote={handleVote} />
+                <Post
+                  className={styles.post}
+                  post={post}
+                  index={index}
+                  // Post Bottom
+                  handleVote={handleVote}
+                  handleCommentClick={handleCommentClick}
+                  postsComments={postsComments}
+                  postsCommentsPending={postsCommentsPending}
+                  postsCommentsRejected={postsCommentsRejected}
+                />
               </div>
             )
           })

@@ -1,9 +1,44 @@
-import React from "react";
-import styles from "./PostBottom.module.css";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSquareCaretUp, faComment } from '@fortawesome/free-regular-svg-icons';
+import { faComment } from '@fortawesome/free-regular-svg-icons';
 
-const PostBottom = ({ postBottomData, handleVoteType }) => {
+import styles from "./PostBottom.module.css";
+import Votes from "./votes/Votes";
+import CommentsContainer from "./commentsContainer/CommentsContainer";
+
+export const formatAnyNumber = (number) => {
+  const numberString = number.toString();
+  if (number < 1000) {
+    return `${number}`;
+  } else if (number < 100000) {
+    const handrads = numberString.slice(-3, -2);
+    const thousands = Math.floor(number / 1000);
+    if (handrads !== '0') {
+      return `${thousands}.${handrads}K`;
+    } else {
+      return `${thousands}K`;
+    }
+  } else if (number < 100000000) {
+    const thousands = numberString.slice(-6, -5);
+    const millions = Math.floor(number / 1000000);
+    if (thousands !== '0') {
+      return `${millions}.${thousands}M`
+    } else {
+      return `${millions}M`
+    }
+  }
+}
+
+const PostBottom = ({
+  postBottomData,
+  handleVoteType,
+  handleCommentClickOnPostBottom,
+  postsComments,
+  postsCommentsPending,
+  postsCommentsRejected
+}) => {
+  const [showComments, setShowComments] = useState(false);
+
   const {
     score,
     num_comments,
@@ -12,92 +47,39 @@ const PostBottom = ({ postBottomData, handleVoteType }) => {
     voteDown,
   } = postBottomData;
 
-
-  const scoreNumber = (score) => {
-    const scoreString = score.toString();
-    if (score < 1000) {
-      return `${score}`;
-    } else if (score < 100000) {
-      const handrads = scoreString.slice(-3, -2);
-      const thousands = Math.floor(score / 1000);
-      if (handrads !== '0') {
-        return `${thousands}.${handrads}k`;
-      } else {
-        return `${thousands}k`;
-      }
-    } else if (score < 100000000) {
-      const thousands = scoreString.slice(-6, -5);
-      const millions = Math.floor(score / 1000000);
-      if (thousands !== '0') {
-        return `${millions}.${thousands}M`
-      } else {
-        return `${millions}M`
-      }
-    }
+  const votesData = {
+    score: score,
+    voteUp: voteUp,
+    voteDown: voteDown,
   }
 
-  const commentsNumber = (comments) => {
-    const commentsString = comments.toString();
-    if (comments < 1000) {
-      return `${comments}`;
-    } else if (comments < 100000) {
-      const handrads = commentsString.slice(-3, -2);
-      const thousands = Math.floor(comments / 1000);
-      if (handrads !== '0') {
-        return `${thousands}.${handrads}K`;
-      } else {
-        return `${thousands}K`;
-      }
-    } else if (comments < 100000000) {
-      const thousands = commentsString.slice(-6, -5);
-      const millions = Math.floor(comments / 1000000);
-      if (thousands !== '0') {
-        return `${millions}.${thousands}M`
-      } else {
-        return `${millions}M`
-      }
-    }
-  }
-
-  const getScoreColor = () => {
-    if (voteUp) {
-      return 'orange';
-    } else if (voteDown) {
-      return 'blue';
-    } else {
-      return 'black';
-    }
+  const handleCommentClick = () => {
+    setShowComments(true);
+    handleCommentClickOnPostBottom();
   }
 
   return (
     <div className={styles.PostBottomContainer}>
-      <div className={styles.votes}>
-        <div className={styles.upArrow} onClick={() => handleVoteType("up")}>
-          <FontAwesomeIcon
-            icon={faSquareCaretUp}
-            style={{
-              color: voteUp ? 'orange' : 'black',
-              height: 25,
-            }}
-          />
-        </div>
-        <span className={styles.score} style={{ color: getScoreColor() }}>
-          {scoreNumber(score)}
-        </span>
-        <div className={styles.downArrow} onClick={() => handleVoteType("down")}>
-          <FontAwesomeIcon
-            icon={faSquareCaretUp} rotation={180}
-            style={{
-              color: voteDown ? 'blue' : 'black',
-              height: 25,
-            }}
-          />
-        </div>
-      </div>
-      <div className={styles.comments}>
+      <Votes votesData={votesData} handleVoteType={handleVoteType} />
+      <div
+        className={styles.comments}
+        onClick={() => handleCommentClick()}
+      >
         <FontAwesomeIcon icon={faComment} style={{ height: 25 }} />
-        <span>{commentsNumber(num_comments)}</span>
+        <span>{formatAnyNumber(num_comments)}</span>
+
       </div>
+      {
+        showComments && (
+          <div className={styles.commentsContainer} onClick={() => setShowComments(false)}>
+            <CommentsContainer
+              postsComments={postsComments}
+              postsCommentsPending={postsCommentsPending}
+              postsCommentsRejected={postsCommentsRejected}
+            />
+          </div>
+        )
+      }
     </div>
   )
 }

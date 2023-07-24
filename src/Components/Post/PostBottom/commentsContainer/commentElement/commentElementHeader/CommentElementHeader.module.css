@@ -1,0 +1,21 @@
+.commentHeaderContainer {
+  display: flex;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.commentHeaderContainer > * {
+  margin-left: 5px;
+}
+
+.commentHeaderContainer .profileImage {
+  width: var(--profileWidth);
+  height: var(--profileHeight);
+  background-color: var(--lightGray);
+  border-radius: 50%;
+}
+
+.commentHeaderContainer .profileName {
+  font-weight: bold;
+}

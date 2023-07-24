@@ -1,5 +1,5 @@
 .PostContainer {
   min-width: 100%;
   background-color: white;
-  box-shadow: 0 3px 5px var(--lightGrayBackgroundColor);
+  box-shadow: 0 3px 5px var(--lightGray);
 }

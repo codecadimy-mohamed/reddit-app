@@ -7,6 +7,6 @@
   justify-content: stretch;
   align-items: center;
   row-gap: 10px;
-  background-color: var(--lightGrayBackgroundColor);
+  background-color: var(--lightGray);
   padding: 5px 10px;
 }

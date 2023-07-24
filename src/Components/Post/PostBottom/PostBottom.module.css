@@ -32,3 +32,28 @@
 .PostBottomContainer .comments > * {
   margin-right: 4px;
 }
+
+.PostBottomContainer .commentsContainer {
+  margin: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(var(--screenWidth) / 1.5);
+  height: calc(var(--screenHeight) / 1.5);
+  overflow: auto;
+  background-color: white;
+  z-index: 1;
+}
+
+/* .PostBottomContainer  .commentsContainer::before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--screenWidth);
+  height: var(--screenHeight);
+  background: rgb(0, 0, 0, 0.3);
+} */
