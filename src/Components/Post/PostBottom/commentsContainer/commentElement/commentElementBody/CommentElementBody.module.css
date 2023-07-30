@@ -1,0 +1,8 @@
+.commentElementBody {
+  padding: 0 20px;
+}
+
+.commentElementBody p {
+  margin-left: calc(35px + 5px);
+  font-size: small;
+}

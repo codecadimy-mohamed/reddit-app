@@ -3,6 +3,7 @@
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
+  padding: 0 20px;
 }
 
 .commentHeaderContainer > * {
@@ -14,6 +15,7 @@
   height: var(--profileHeight);
   background-color: var(--lightGray);
   border-radius: 50%;
+  margin: 0;
 }
 
 .commentHeaderContainer .profileName {
