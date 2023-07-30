@@ -17,8 +17,8 @@ import {
   selectPostsCommentsRejected,
 } from "./topPostsSlice";
 import { selectSelectedSubreddit } from "../searchInput/searchInputSlice";
-import PostPending from "../../Components/PostPending/PostPending";
-import Post from "../../Components/post/Post";
+import PostPending from "../../Components/postElementPending/PostPending";
+import Post from "../../Components/postElement/Post";
 
 function TopPosts() {
   const dispatch = useDispatch();

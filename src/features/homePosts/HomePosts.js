@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Post from "../../Components/post/Post";
+import Post from "../../Components/postElement/Post";
 import styles from './HomePosts.module.css';
 import { getHomePosts, selectHomePosts, selectHomePostsPending, selectHomePostsRejected, incrementUpScore, decrementUpScore, incrementDownScore, decrementDownScore } from "./homePostsSlice";
-import PostPending from "../../Components/PostPending/PostPending";
+import PostPending from "../../Components/postElementPending/PostPending";
 import { selectSelectedCategory } from "../categories/categoriesSlice";
 
 function HomePosts() {
