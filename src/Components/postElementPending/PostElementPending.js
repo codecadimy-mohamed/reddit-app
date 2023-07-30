@@ -1,10 +1,10 @@
 import React from "react";
 import PostPendingHeader from "./PostPendingHeader/PostPendingHeader";
 import PostPendingTitle from "./PostPendingTitle/PostPendingTitle";
-import styles from "./PostPending.module.css";
+import styles from "./PostElementPending.module.css";
 import PostPendingVisual from "./PostPendingVisual/PostPendingVisual";
 
-const PostPending = () => {
+const PostElementPending = () => {
   return (
     <div className={styles.PostContainer}>
       <PostPendingHeader />
@@ -14,4 +14,4 @@ const PostPending = () => {
   );
 };
 
-export default PostPending;
+export default PostElementPending;

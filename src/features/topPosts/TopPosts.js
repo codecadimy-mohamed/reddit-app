@@ -17,7 +17,7 @@ import {
   selectPostsCommentsRejected,
 } from "./topPostsSlice";
 import { selectSelectedSubreddit } from "../searchInput/searchInputSlice";
-import PostPending from "../../Components/postElementPending/PostPending";
+import PostElementPending from "../../Components/postElementPending/PostElementPending";
 import Post from "../../Components/postElement/Post";
 
 function TopPosts() {
@@ -66,9 +66,9 @@ function TopPosts() {
     return (
       <div className={styles.QuickSearchResultsContainer}>
         <h2>{selectedSubreddit.data.display_name_prefixed} posts</h2>
-        <PostPending />
-        <PostPending />
-        <PostPending />
+        <PostElementPending />
+        <PostElementPending />
+        <PostElementPending />
       </div>
     )
   } else if (isRejected) {

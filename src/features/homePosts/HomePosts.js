@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Post from "../../Components/postElement/Post";
 import styles from './HomePosts.module.css';
 import { getHomePosts, selectHomePosts, selectHomePostsPending, selectHomePostsRejected, incrementUpScore, decrementUpScore, incrementDownScore, decrementDownScore } from "./homePostsSlice";
-import PostPending from "../../Components/postElementPending/PostPending";
+import PostElementPending from "../../Components/postElementPending/PostElementPending";
 import { selectSelectedCategory } from "../categories/categoriesSlice";
 
 function HomePosts() {
@@ -43,9 +43,9 @@ function HomePosts() {
   if (isPending) {
     return (
       <>
-        <PostPending />
-        <PostPending />
-        <PostPending />
+        <PostElementPending />
+        <PostElementPending />
+        <PostElementPending />
       </>
     )
   } else if (isRejected) {

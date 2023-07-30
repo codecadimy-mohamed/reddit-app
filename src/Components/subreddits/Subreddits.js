@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Subreddits.module.css";
 import Subreddit from "../subreddit/Subreddit";
-import PostPendingHeader from "../PostPending/PostPendingHeader/PostPendingHeader";
+import PostPendingHeader from "../postElementPending/PostPendingHeader/PostPendingHeader.js";
 
 const Subreddits = ({ subreddits, subredditsPending, subredditsRejected, handleSelectedSubreddit }) => {
 
