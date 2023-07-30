@@ -22,13 +22,6 @@ const Post = ({
 
   const { data } = post;
 
-  // PostHeader
-  const postHeaderData = {
-    subreddit_name_prefixed: data.subreddit_name_prefixed,
-    created_utc: data.created_utc,
-    all_awardings: data.all_awardings,
-  };
-
   // PostTitle
   const postTitleData = {
     title: data.title,
